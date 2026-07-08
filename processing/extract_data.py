@@ -9,7 +9,7 @@ key = "titanic.csv"
 def get_data():
     response = s3.get_object(Bucket=bucket, Key= key)
     df = pd.read_csv(BytesIO(response["Body"].read()))
-    return df.head(5)
+    return df
 
 def get_reponse():
     response = "Extrayendo data"
