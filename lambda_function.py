@@ -6,12 +6,12 @@ from processing.load_clean_data import create_new_data
 
 
 def lambda_handler(event, context):
-    text = "Desde AWS!!!"
+    # text = "Desde AWS!!!"
     
     raw_data = get_data()
-    data_clean= transform_clean_data(raw_data) #Hola desde lambda
-    json_buffer = data_clean.to_json(orient="records").encode("utf-8")
-    new_data = create_new_data(json_buffer)
+    data_clean= transform_clean_data(raw_data)
+    csv_buffer = data_clean.to_csv(index=False).encode("utf-8")
+    new_data = create_new_data(csv_buffer)
 
     # TODO implement
     return {
